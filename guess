@@ -8,7 +8,7 @@ local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 -- ===================== ç½ååç³»ç» =====================
 local whitelist = {
-    -- ç½ååç¨æ·åè¡¨
+    -- Whitelisted player names¨
 	"KoaIaIala",
     "Kedada001",
     "zero456127",
