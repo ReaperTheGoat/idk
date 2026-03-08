@@ -9,7 +9,7 @@ local UserInputService = game:GetService("UserInputService")
 -- ===================== ç½ååç³»ç» =====================
 local whitelist = {   
     -- ä½¿ç¨ç¨æ·åï¼å¤ç¨ï¼
-	"KoalalaIa",
+	"KoaIaIala",
     "tranvan1909",
     "askeg_75",
     "nzx_fy",
