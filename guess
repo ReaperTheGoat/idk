@@ -26,7 +26,6 @@ local function isWhitelisted(player)
     end
     return false
 end
--- æ¾ç¤ºç½ååæç¤º
 local function showWhitelistWarning()
     local TweenService = game:GetService("TweenService")
     local whitelistGui = Instance.new("ScreenGui")
@@ -34,13 +33,11 @@ local function showWhitelistWarning()
     whitelistGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     whitelistGui.ResetOnSpawn = false
     whitelistGui.Parent = CoreGui
-    -- èæ¯é®ç½©
     local backgroundOverlay = Instance.new("Frame")
     backgroundOverlay.Size = UDim2.new(1, 0, 1, 0)
     backgroundOverlay.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
     backgroundOverlay.BackgroundTransparency = 0.7
     backgroundOverlay.Parent = whitelistGui
-    -- ä¸»çªå£
     local mainFrame = Instance.new("Frame")
     mainFrame.Name = "MainFrame"
     mainFrame.Size = UDim2.new(0, 450, 0, 250)
@@ -48,7 +45,6 @@ local function showWhitelistWarning()
     mainFrame.BackgroundColor3 = Color3.fromRGB(24, 24, 28)
     mainFrame.BorderSizePixel = 0
     mainFrame.Parent = whitelistGui
-    -- çªå£åè§
     local corner = Instance.new("UICorner")
     corner.CornerRadius = UDim.new(0, 12)
     corner.Parent = mainFrame
@@ -276,7 +272,7 @@ function UI:NewWindow(title)
     self.MainGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     self.MainGui.ResetOnSpawn = false
     self.MainGui.Parent = syn and CoreGui or PlayerGui
-    -- ä¸»çªå£æ¡æ¶
+
     self.Window = Instance.new("Frame")
     self.Window.Name = "MainWindow"
     self.Window.Size = UDim2.new(0, 150, 0, 150)
@@ -285,23 +281,23 @@ function UI:NewWindow(title)
     self.Window.BorderSizePixel = 0
     self.Window.ClipsDescendants = true
     self.Window.Parent = self.MainGui
-    -- çªå£åè§
+
     local corner = Instance.new("UICorner")
     corner.CornerRadius = UDim.new(0, 8)
     corner.Parent = self.Window
-    -- çªå£é´å½±
+
     local shadow = Instance.new("UIStroke")
     shadow.Color = Color3.fromRGB(0, 0, 0)
     shadow.Transparency = 0.5
     shadow.Thickness = 4
     shadow.Parent = self.Window
-    -- æ é¢æ 
+ 
     self.TitleBar = Instance.new("Frame")
     self.TitleBar.Name = "TitleBar"
     self.TitleBar.Size = UDim2.new(1, 0, 0, 40)
     self.TitleBar.BackgroundColor3 = Color3.fromRGB(36, 36, 42)
     self.TitleBar.Parent = self.Window
-    -- æ é¢æå­
+
     self.TitleText = Instance.new("TextLabel")
     self.TitleText.Name = "TitleText"
     self.TitleText.Size = UDim2.new(1, -40, 1, 0)
@@ -313,7 +309,7 @@ function UI:NewWindow(title)
     self.TitleText.TextColor3 = Color3.fromRGB(255, 255, 255)
     self.TitleText.TextXAlignment = Enum.TextXAlignment.Left
     self.TitleText.Parent = self.TitleBar
-    -- æ¶èµ·æé®
+  
     self.CollapseBtn = Instance.new("TextButton")
     self.CollapseBtn.Name = "CollapseBtn"
     self.CollapseBtn.Size = UDim2.new(0, 40, 1, 0)
@@ -324,7 +320,7 @@ function UI:NewWindow(title)
     self.CollapseBtn.TextSize = 20
     self.CollapseBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
     self.CollapseBtn.Parent = self.TitleBar
-    -- åå®¹å®¹å¨
+
     self.ContentContainer = Instance.new("ScrollingFrame")
     self.ContentContainer.Name = "ContentContainer"
     self.ContentContainer.Size = UDim2.new(1, 0, 1, -40)
@@ -333,24 +329,24 @@ function UI:NewWindow(title)
     self.ContentContainer.ScrollBarThickness = 4
     self.ContentContainer.CanvasSize = UDim2.new(1, 0, 0, 0)
     self.ContentContainer.Parent = self.Window
-    -- èåå®¹å¨
+
     self.MenuContainer = Instance.new("Frame")
     self.MenuContainer.Size = UDim2.new(1, 0, 0, 0)
     self.MenuContainer.BackgroundTransparency = 1
     self.MenuContainer.Parent = self.ContentContainer
-    -- çªå£ææ½åè½
+ 
     self:MakeDraggable()
-    -- æ¶èµ·/å±å¼åè½
+
     self.IsCollapsed = false
     self.CollapseBtn.MouseButton1Click:Connect(function()
         self:ToggleCollapse()
     end)
-    -- å­å¨ææå­èå
+
     self.Sections = {}
     self.CurrentY = 0
     return self
 end
--- çªå£ææ½
+
 function UI:MakeDraggable()
     local dragging = false
     local dragStart = Vector2.new()
@@ -451,7 +447,7 @@ function UI:NewSection(title)
     self.MenuContainer.Size = UDim2.new(1, 0, 0, self.CurrentY)
     self.ContentContainer.CanvasSize = UDim2.new(1, 0, 0, self.CurrentY)
     -- æ´æ°ä¸»çªå£é«åº¦ä»¥è·éå­èåå¤§å°
-    local newHeight = math.max(150, 40 + self.CurrentY + 20) -- 40 æ¯æ é¢æ é«åº¦ï¼20 æ¯åºé¨è¾¹è·
+    local newHeight = math.max(150, 40 + self.CurrentY + 20)
     TweenService:Create(self.Window, TweenInfo.new(0.2), {
         Size = UDim2.new(0, 150, 0, newHeight)
     }):Play()
@@ -496,7 +492,7 @@ function UI:NewSection(title)
         TweenService:Create(self.Window, TweenInfo.new(0.2), {
             Size = UDim2.new(0, 150, 0, newHeight)
         }):Play()
-        -- æ´æ°åå®¹å®¹å¨å¤§å°
+
         self.ContentContainer.Size = UDim2.new(1, 0, 1, -40)
     end)
     -- åå»ºå¼å³æé®
@@ -1024,7 +1020,7 @@ local function CreateFlingUI()
     TitleText.Size = UDim2.new(1, -30, 1, 0)
     TitleText.Position = UDim2.new(0, 8, 0, 0)
     TitleText.BackgroundTransparency = 1
-    TitleText.Text = "è¸¢é£æ§å¶"
+    TitleText.Text = "Kick Control"
     TitleText.Font = Enum.Font.SourceSansBold
     TitleText.TextSize = 14
     TitleText.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -1033,7 +1029,7 @@ local function CreateFlingUI()
     CloseBtn.Size = UDim2.new(0, 30, 1, 0)
     CloseBtn.Position = UDim2.new(1, -30, 0, 0)
     CloseBtn.BackgroundTransparency = 1
-    CloseBtn.Text = "Ã"
+    CloseBtn.Text = "Close"
     CloseBtn.Font = Enum.Font.SourceSansBold
     CloseBtn.TextSize = 16
     CloseBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -1049,7 +1045,7 @@ local function CreateFlingUI()
     TargetLabel.Size = UDim2.new(1, -15, 0, 16)
     TargetLabel.Position = UDim2.new(0, 8, 0, 8)
     TargetLabel.BackgroundTransparency = 1
-    TargetLabel.Text = "éæ©ç®æ "
+    TargetLabel.Text = "Select Target"
     TargetLabel.Font = Enum.Font.SourceSansBold
     TargetLabel.TextSize = 12
     TargetLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -1058,7 +1054,7 @@ local function CreateFlingUI()
     TargetDesc.Size = UDim2.new(1, -15, 0, 12)
     TargetDesc.Position = UDim2.new(0, 8, 0, 24)
     TargetDesc.BackgroundTransparency = 1
-    TargetDesc.Text = "éæ©è¦è¸¢é£çç©å®¶ï¼All=å¨é¨ï¼"
+    TargetDesc.Text = "Select the player to kick"
     TargetDesc.Font = Enum.Font.SourceSans
     TargetDesc.TextSize = 10
     TargetDesc.TextColor3 = Color3.fromRGB(200, 200, 200)
@@ -1141,7 +1137,7 @@ local function CreateFlingUI()
     StartBtn.Size = UDim2.new(1, -15, 0, 28)
     StartBtn.Position = UDim2.new(0, 8, 0, 260)
     StartBtn.BackgroundColor3 = Color3.fromRGB(60, 180, 60)
-    StartBtn.Text = "å¼å¯è¸¢é£"
+    StartBtn.Text = "Start Fling"
     StartBtn.Font = Enum.Font.SourceSansBold
     StartBtn.TextSize = 12
     StartBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -1153,7 +1149,7 @@ local function CreateFlingUI()
     StopBtn.Size = UDim2.new(1, -15, 0, 28)
     StopBtn.Position = UDim2.new(0, 8, 0, 290)
     StopBtn.BackgroundColor3 = Color3.fromRGB(200, 60, 60)
-    StopBtn.Text = "å³é­è¸¢é£"
+    StopBtn.Text = "Stop Fling"
     StopBtn.Font = Enum.Font.SourceSansBold
     StopBtn.TextSize = 12
     StopBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
